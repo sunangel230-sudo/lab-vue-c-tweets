@@ -1,5 +1,14 @@
+<template>
+  <div class="app">
+    <Tweet
+      v-for="tweet in tweets"
+      :key="tweet.id"
+      :tweet="tweet"
+    />
+  </div>
+</template>
+
 <script setup>
-import { ref } from 'vue'
 import Tweet from './components/Tweet.vue'
 
 const tweets = [
@@ -12,36 +21,36 @@ const tweets = [
     },
     timestamp: "Nov 30, 2020",
     message:
-      "On December 7th, we will be hosting a #webinar that will introduce you to #SQL! Are you ready? 🚀"
+      "On December 7th, we will be hosting a #webinar that will introduce you to #SQL! 🚀"
   },
   {
     id: 2,
     user: {
       name: "Thoughts of Dog",
       handle: "dog_feelings",
-      image: "https://i.imgur.com/b0EdHVV.jpg",
+      image: "https://i.imgur.com/b0EdHVV.jpg"
     },
     timestamp: "1h ago",
     message:
-      "the human likes to say. that i live here rent free. but i would argue. this housing accommodation. is my payment. for a lifetime of love. and excellent company"
+      "the human likes to say that i live here rent free. but i would argue this housing is my payment for love."
   },
   {
     id: 3,
     user: {
       name: "Thoughts of Dog",
       handle: "dog_feelings",
-      image: "https://i.imgur.com/b0EdHVV.jpg",
+      image: "https://i.imgur.com/b0EdHVV.jpg"
     },
     timestamp: "2h ago",
     message:
-      "sometimes. the human presses their noggin against mine. to figure out what i'm thinking. so i just think really hard. about how much i love them. and hope they figure it out"
+      "sometimes the human presses their head against mine to figure out what I’m thinking."
   },
   {
     id: 4,
     user: {
       name: "Thoughts of Dog",
       handle: "dog_feelings",
-      image: "https://i.imgur.com/b0EdHVV.jpg",
+      image: "https://i.imgur.com/b0EdHVV.jpg"
     },
     timestamp: "3h ago",
     message: `here is what. i plan to accomplish today:
@@ -56,40 +65,63 @@ const tweets = [
 ]
 </script>
 
-<template>
-  <div class="app">
-    <Tweet
-      v-for="tweet in tweets"
-      :key="tweet.id"
-      :tweet="tweet"
-    />
-  </div>
-</template>
-
 <style>
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f8fa;
 }
 
-/* App container */
 .app {
-  max-width: 650px;
-  margin: 0 auto;
+  text-align: center;
   padding: 20px;
-  background: white;
-  border-left: 1px solid #e6ecf0;
-  border-right: 1px solid #e6ecf0;
 }
 
-/* Tweet layout */
+.app-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.app-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.app-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .tweet {
   margin: 0 auto;
+  min-width: 480px;
+  max-width: 640px;
+  min-height: 80px;
   padding: 10px;
-  border-bottom: 1px solid #e6ecf0;
+  border: 1px solid #ccc;
   display: flex;
   font-size: 1.1rem;
   line-height: 18px;
@@ -104,50 +136,54 @@ body {
 .top {
   display: flex;
   line-height: 1.4rem;
-  align-items: center;
 }
 
-/* Profile */
+.more {
+  margin-left: 20px;
+}
+
 .profile {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 50px;
   margin-right: 10px;
 }
 
-/* Text styles */
 .name {
   font-weight: bold;
+  margin-bottom: 0.5em;
   margin-right: 0.3em;
 }
 
 .handle {
   color: #536471;
-  margin: 0 3px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .timestamp {
   color: #536471;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .timestamp::before {
   content: "·";
-  padding: 0 0.3em;
+  padding-right: 0.3em;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-/* Message */
 .message {
   text-align: left;
+  font-stretch: 100%;
   font-weight: 400;
   line-height: 1.6rem;
+  overflow-wrap: break-word;
   white-space: pre-wrap;
-  word-break: break-word;
 }
 
-/* Actions */
 .actions {
-  padding: 5px;
+  padding: 5px 5px;
   width: 360px;
   display: flex;
   justify-content: space-between;
