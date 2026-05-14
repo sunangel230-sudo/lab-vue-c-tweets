@@ -37,20 +37,7 @@ defineProps({
 </template>
 
 <style scoped>
-.tweet {
-  display: flex;
-  padding: 12px;
-  border-bottom: 1px solid #e6ecf0;
-}
-
-.body {
-  margin-left: 10px;
-  flex: 1;
-}
-
-.top {
-  display: flex;
-  gap: 6px;
-  align-items: center;
+a {
+  color: #42B983;
 }
 </style>
